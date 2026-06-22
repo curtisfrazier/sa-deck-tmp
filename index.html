@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Situational Awareness: The Decade Ahead — Autonomous Agent AI</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#05080F; font-family:'Helvetica Neue', Arial, sans-serif; }
+  .page {
+    position:relative; width:1280px; height:720px; overflow:hidden;
+    background:#0B1220; color:#E8EEF7;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:54px 64px; margin:0 auto 28px auto;
+  }
+  .hdr { display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .chip { width:44px; height:44px; border-radius:10px; background:#FFFFFF;
+          display:flex; align-items:center; justify-content:center; }
+  .chip img { width:32px; height:32px; object-fit:contain; }
+  .brandtxt { font-size:14px; font-weight:700; letter-spacing:2px; color:#8DA0BE; }
+  .tag { font-size:13px; font-weight:700; letter-spacing:2px; color:#38BDF8;
+         border:1px solid #234; border-radius:999px; padding:7px 14px; }
+  .main { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .kicker { font-size:17px; font-weight:800; letter-spacing:3px; color:#38BDF8; text-transform:uppercase; margin-bottom:16px; }
+  h1 { font-size:50px; font-weight:800; line-height:1.08; color:#F8FAFC; letter-spacing:-0.5px; }
+  h2 { font-size:40px; font-weight:800; line-height:1.1; color:#F8FAFC; letter-spacing:-0.5px; }
+  .sub { font-size:23px; color:#AFC0D8; line-height:1.5; margin-top:20px; max-width:980px; }
+  .ftr { display:flex; align-items:center; justify-content:space-between;
+         font-size:13px; color:#5B6B86; letter-spacing:0.4px; }
+  ul { list-style:none; }
+  li { font-size:22px; color:#CBD5E1; line-height:1.45; margin:14px 0; padding-left:30px; position:relative; }
+  li:before { content:""; position:absolute; left:0; top:11px; width:11px; height:11px; border-radius:3px; background:#38BDF8; }
+  .cols { display:flex; gap:26px; margin-top:8px; }
+  .panel { flex:1; background:#111B30; border:1px solid #21304C; border-radius:16px; padding:26px 28px; }
+  .panel.happened { border-color:#1E3A4D; background:#0E1B26; }
+  .plabel { font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+  .panel li { font-size:19px; margin:11px 0; padding-left:26px; }
+  .panel li:before { width:8px; height:8px; top:9px; }
+  .badge { display:inline-block; font-size:18px; font-weight:800; letter-spacing:0.5px;
+           padding:10px 20px; border-radius:999px; }
+  .b-green { background:rgba(52,211,153,0.15); color:#34D399; border:1px solid rgba(52,211,153,0.4); }
+  .b-amber { background:rgba(251,191,36,0.14); color:#FBBF24; border:1px solid rgba(251,191,36,0.4); }
+  .b-gray  { background:rgba(148,163,184,0.14); color:#A8B6CC; border:1px solid rgba(148,163,184,0.35); }
+  .verdict { margin-top:22px; display:flex; align-items:center; gap:16px; }
+  .vtext { font-size:18px; color:#90A2BC; }
+  .cardgrid { display:flex; flex-wrap:wrap; gap:20px; margin-top:8px; }
+  .card { width:calc(50% - 10px); background:#111B30; border:1px solid #21304C; border-radius:16px; padding:22px 24px; }
+  .card h3 { font-size:21px; color:#7CC9F5; font-weight:800; margin-bottom:10px; }
+  .card p { font-size:18px; color:#C2D0E4; line-height:1.45; }
+  .stack .item { display:flex; gap:18px; align-items:flex-start; margin:18px 0; }
+  .num { flex:none; width:46px; height:46px; border-radius:12px; background:#16263F; border:1px solid #2A3E5E;
+         color:#38BDF8; font-size:22px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .stack .item p { font-size:22px; color:#CBD5E1; line-height:1.4; padding-top:6px; }
+  .stack .item p b { color:#F1F5FB; }
+  table { width:100%; border-collapse:collapse; margin-top:10px; }
+  td { padding:15px 14px; border-bottom:1px solid #1E2B43; font-size:21px; color:#D5DEEC; }
+  td.v { text-align:right; font-weight:800; white-space:nowrap; }
+  .titlewrap { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .pretitle { font-size:18px; font-weight:800; letter-spacing:4px; color:#38BDF8; text-transform:uppercase; margin-bottom:22px; }
+  .bigtitle { font-size:66px; font-weight:800; line-height:1.05; color:#FFFFFF; letter-spacing:-1px; }
+  .accentline { width:84px; height:5px; background:#38BDF8; border-radius:3px; margin:26px 0; }
+  .presenter { font-size:21px; color:#AFC0D8; margin-top:8px; }
+  .presenter b { color:#F1F5FB; }
+  .closebadge { width:84px; height:84px; border-radius:20px; background:#fff; display:flex; align-items:center; justify-content:center; }
+  .closebadge img { width:62px; height:62px; object-fit:contain; }
+  .muted { color:#7C8BA5; }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1 — TITLE ============ -->
+<section class="page" data-document-role="page" data-label="Title"
+  data-speaker-notes="Welcome. Tonight we are looking at one of the most talked-about documents in AI: Leopold Aschenbrenner's 'Situational Awareness,' published in June 2024. It made a series of bold, specific predictions about the next decade. Two years on, we can actually grade it. My goal is not to convince you of any one forecast, but to show you how much of the world has already started moving in the direction he described.">
+  <div class="hdr">
+    <div class="brand">
+      <div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div>
+      <span class="brandtxt">AUTONOMOUS AGENT &nbsp;·&nbsp; AI CONSULTING</span>
+    </div>
+    <span class="tag">JUNE 2026</span>
+  </div>
+  <div class="titlewrap">
+    <div class="pretitle">A 2024 Forecast, Checked Against Reality</div>
+    <div class="bigtitle">Situational Awareness:<br>The Decade Ahead</div>
+    <div class="accentline"></div>
+    <div class="sub">What Leopold Aschenbrenner predicted about AI in June 2024 — and how much has already come true.</div>
+    <div class="presenter" style="margin-top:30px;">Presented by <b>Fleming Slone</b> &nbsp;·&nbsp; Founder, Autonomous Agent AI</div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>autonomous-agent.ai</span></div>
+</section>
+
+<!-- ============ SLIDE 2 — THE SOURCE ============ -->
+<section class="page" data-document-role="page" data-label="The Paper & The Author"
+  data-speaker-notes="A quick word on where this comes from. Leopold Aschenbrenner is a young researcher who worked on OpenAI's 'Superalignment' safety team before leaving in 2024. He compiled his views into a roughly 165-page essay. His famous line — 'you can see the future first in San Francisco' — captures his core claim: only a few hundred insiders truly grasp how fast this is moving. Whether or not you agree, the document became hugely influential among investors and policymakers.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">THE SOURCE</span>
+  </div>
+  <div class="main">
+    <div class="kicker">The Source</div>
+    <h1>One essay — and a few hundred<br>people who saw it coming.</h1>
+    <div class="cols" style="margin-top:34px;">
+      <div class="panel">
+        <ul>
+          <li><b style="color:#F1F5FB;">Leopold Aschenbrenner</b> — former researcher on OpenAI's "Superalignment" safety team.</li>
+          <li>Published <b style="color:#F1F5FB;">June 2024</b> as a ~165-page essay, "Situational Awareness: The Decade Ahead."</li>
+          <li>Argues the AI race is the defining story of the decade — and most people aren't paying attention.</li>
+        </ul>
+      </div>
+      <div class="panel happened" style="flex:0.9;">
+        <div class="plabel" style="color:#7CC9F5;">In his words</div>
+        <p style="font-size:24px;line-height:1.45;color:#E3ECF7;font-style:italic;">“You can see the future first in San Francisco… Before long, the world will wake up.”</p>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>02 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 3 — BIG IDEA ============ -->
+<section class="page" data-document-role="page" data-label="The Big Idea"
+  data-speaker-notes="Here's the whole thesis in plain English, no jargon. One: AI keeps getting dramatically smarter, and he argues something like human-level AI — 'AGI' — is plausible around 2027. Two: chasing that goal unleashes trillions of dollars of spending and a desperate hunt for electricity. Three: because whoever gets there first gains huge economic and military power, it turns into a national-security race, and governments get directly involved. You don't have to believe every date. The useful test is simpler: is the world actually moving this way? Let's check.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">THE THESIS</span>
+  </div>
+  <div class="main">
+    <div class="kicker">The Big Idea, In Plain English</div>
+    <h1>From chatbots to a national project — fast.</h1>
+    <div class="stack" style="margin-top:30px;">
+      <div class="item"><div class="num">1</div><p><b>AI keeps getting dramatically smarter.</b> Human-level AI ("AGI") is plausible by ~2027, then quickly beyond.</p></div>
+      <div class="item"><div class="num">2</div><p><b>That triggers a building boom.</b> Trillions of dollars flow into chips and data centers — and a scramble for power.</p></div>
+      <div class="item"><div class="num">3</div><p><b>It becomes a national-security race.</b> Governments step in, security tightens, and superintelligence becomes a matter of state.</p></div>
+    </div>
+    <div class="sub muted" style="margin-top:24px;font-size:20px;">You don't need to believe every date — only to ask whether the world is moving this way.</div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>03 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 4 — ROADMAP ============ -->
+<section class="page" data-document-role="page" data-label="Five Predictions"
+  data-speaker-notes="So here's how we'll spend the next ten minutes. Five big, checkable predictions from the paper: the trillion-dollar compute build-out; power becoming the bottleneck; security and espionage; governments stepping in; and a fight over public ownership of AI. Then a bonus round on the technology itself and on the author. For each one I'll show you what he said in 2024 and what actually happened by 2026 — with a verdict.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">THE SCORECARD</span>
+  </div>
+  <div class="main">
+    <div class="kicker">What We'll Check</div>
+    <h1>Five bold predictions.<br>Two years later, how did they hold up?</h1>
+    <div class="cardgrid" style="margin-top:30px;">
+      <div class="card"><h3>1 · Trillion-dollar compute</h3><p>A spending race from billions to trillions on AI super-clusters.</p></div>
+      <div class="card"><h3>2 · Power is the bottleneck</h3><p>Electricity — not chips — becomes the hard limit.</p></div>
+      <div class="card"><h3>3 · Security &amp; espionage</h3><p>AI labs become prime targets for theft and spying.</p></div>
+      <div class="card"><h3>4 · Government steps in</h3><p>A national, Manhattan-Project-style effort takes shape.</p></div>
+    </div>
+    <div class="sub" style="margin-top:22px;font-size:20px;"><b style="color:#7CC9F5;">5 · A public stake in AI</b> &nbsp;—&nbsp; plus a bonus round on the technology and the author himself.</div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>04 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 5 — PREDICTION 1 ============ -->
+<section class="page" data-document-role="page" data-label="Prediction 1 — Trillion-Dollar Compute"
+  data-speaker-notes="Prediction one. In 2024 he wrote that boardroom plans were leaping from ten-billion-dollar clusters to hundred-billion to trillion-dollar clusters — 'another zero every six months.' What happened? In January 2025, the 'Stargate' project was announced at the White House: up to 500 billion dollars. Big Tech's combined capital spending is now guided toward roughly 725 billion dollars in 2026 alone. Elon Musk's xAI built 'Colossus' in Memphis to over half a million GPUs. Meta is building a five-gigawatt site nicknamed Hyperion. The honest caveat: individual clusters are at single-digit gigawatts, not the 100 gigawatts he projected for 2030 — so the direction is dead-on, the finish line is still ahead. Verdict: confirmed.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">PREDICTION 1 / 5</span>
+  </div>
+  <div class="main">
+    <div class="kicker">The Trillion-Dollar Cluster</div>
+    <h2>“Every six months, another zero gets added to the plans.”</h2>
+    <div class="cols" style="margin-top:26px;">
+      <div class="panel">
+        <div class="plabel" style="color:#8DA0BE;">He predicted · 2024</div>
+        <ul>
+          <li>$10B → $100B → <b style="color:#F1F5FB;">trillion-dollar</b> super-clusters.</li>
+          <li>"Trillions of dollars" of total AI infrastructure spending.</li>
+          <li>Single sites scaling toward gigawatts of power.</li>
+        </ul>
+      </div>
+      <div class="panel happened">
+        <div class="plabel" style="color:#34D399;">What happened · by 2026</div>
+        <ul>
+          <li><b style="color:#F1F5FB;">Stargate:</b> $500B project unveiled at the White House (Jan 2025).</li>
+          <li>Big Tech capex guided to <b style="color:#F1F5FB;">~$725B in 2026</b> alone.</li>
+          <li>xAI "Colossus": <b style="color:#F1F5FB;">~555,000 GPUs</b>, 2 GW, Memphis.</li>
+          <li>Meta building a <b style="color:#F1F5FB;">5 GW</b> site ("Hyperion").</li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdict"><span class="badge b-green">✓ CONFIRMED</span><span class="vtext">Direction nailed — though 100 GW clusters are still ahead.</span></div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>05 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 6 — PREDICTION 2 ============ -->
+<section class="page" data-document-role="page" data-label="Prediction 2 — Power Is the Bottleneck"
+  data-speaker-notes="Prediction two, and this is the one most people missed: he said the real constraint wouldn't be chips — it would be electricity. He predicted a scramble for power, including reviving nuclear plants. What happened is almost on-the-nose. In September 2024, Three Mile Island — yes, that Three Mile Island — announced it would restart specifically to power Microsoft's data centers. Amazon, Google, and Meta all signed nuclear deals; Meta alone lined up up to 6.6 gigawatts. xAI in Memphis ran dozens of gas turbines on-site because the grid couldn't keep up. And ordinary power bills are rising in regions packed with data centers. Verdict: confirmed.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">PREDICTION 2 / 5</span>
+  </div>
+  <div class="main">
+    <div class="kicker">Power Becomes The Binding Constraint</div>
+    <h2>The bottleneck isn't chips. It's electricity.</h2>
+    <div class="cols" style="margin-top:26px;">
+      <div class="panel">
+        <div class="plabel" style="color:#8DA0BE;">He predicted · 2024</div>
+        <ul>
+          <li>Electricity becomes the <b style="color:#F1F5FB;">hard limit</b> on AI growth.</li>
+          <li>U.S. needs "tens of percent" more power generation.</li>
+          <li>A scramble for nuclear, gas — any available power.</li>
+        </ul>
+      </div>
+      <div class="panel happened">
+        <div class="plabel" style="color:#34D399;">What happened · by 2026</div>
+        <ul>
+          <li><b style="color:#F1F5FB;">Three Mile Island</b> restarting to power Microsoft (Sep 2024).</li>
+          <li>Amazon, Google &amp; Meta sign nuclear deals — Meta up to <b style="color:#F1F5FB;">6.6 GW</b>.</li>
+          <li>xAI runs <b style="color:#F1F5FB;">~35 gas turbines</b> on-site in Memphis.</li>
+          <li>Data-center demand surges; <b style="color:#F1F5FB;">power bills rising</b>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdict"><span class="badge b-green">✓ CONFIRMED</span><span class="vtext">Perhaps the paper's most accurate call.</span></div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>06 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 7 — PREDICTION 3 ============ -->
+<section class="page" data-document-role="page" data-label="Prediction 3 — Security & Espionage"
+  data-speaker-notes="Prediction three: he warned that AI labs were dangerously under-secured, and that rivals — especially China — would try to steal the 'secrets' and the models themselves. The evidence has piled up. In early 2026, a former Google engineer was convicted of stealing AI data-center secrets for China — the first U.S. conviction for AI economic espionage. Labs responded by hiring serious national-security talent, including a former NSA director onto OpenAI's board. The U.S. and China are locked in an escalating chip-export war. And when China's DeepSeek released a cheap, competitive model in January 2025, it knocked roughly 600 billion dollars off Nvidia in a single day. Verdict: confirmed.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">PREDICTION 3 / 5</span>
+  </div>
+  <div class="main">
+    <div class="kicker">Lock Down The Labs</div>
+    <h2>AI labs become a national-security target.</h2>
+    <div class="cols" style="margin-top:26px;">
+      <div class="panel">
+        <div class="plabel" style="color:#8DA0BE;">He predicted · 2024</div>
+        <ul>
+          <li>Labs are <b style="color:#F1F5FB;">under-secured</b> for what they're building.</li>
+          <li>Rivals will try to steal models and secrets.</li>
+          <li>AI security becomes a matter of national security.</li>
+        </ul>
+      </div>
+      <div class="panel happened">
+        <div class="plabel" style="color:#34D399;">What happened · by 2026</div>
+        <ul>
+          <li>Ex-Google engineer <b style="color:#F1F5FB;">convicted of stealing AI secrets</b> for China.</li>
+          <li>Labs hire ex-NSA director &amp; national-security teams.</li>
+          <li>Escalating <b style="color:#F1F5FB;">U.S.–China chip-export war</b>.</li>
+          <li>"DeepSeek shock" wipes <b style="color:#F1F5FB;">~$600B</b> off Nvidia in a day.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdict"><span class="badge b-green">✓ CONFIRMED</span><span class="vtext">Espionage moved from hypothetical to courtroom.</span></div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>07 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 8 — PREDICTION 4 ============ -->
+<section class="page" data-document-role="page" data-label="Prediction 4 — Government Steps In"
+  data-speaker-notes="Prediction four was his boldest: that by roughly 2027 or 2028 the U.S. government would launch a Manhattan-Project-style national AGI effort. That hasn't fully happened — but the early scaffolding is appearing faster than expected. Stargate was announced from the White House itself. AI data centers are being fast-tracked onto federal land and national-lab sites. In November 2025, the 'Genesis Mission' executive order mobilized all 17 national laboratories around AI. OpenAI is working with the nuclear-weapons labs, and the Pentagon handed 200-million-dollar contracts to OpenAI, Anthropic, Google, and xAI. So: not a single government project yet, but the government is clearly stepping in. Verdict: emerging.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">PREDICTION 4 / 5</span>
+  </div>
+  <div class="main">
+    <div class="kicker">"The Project"</div>
+    <h2>The government steps into the AGI race.</h2>
+    <div class="cols" style="margin-top:26px;">
+      <div class="panel">
+        <div class="plabel" style="color:#8DA0BE;">He predicted · 2024</div>
+        <ul>
+          <li>A national, <b style="color:#F1F5FB;">Manhattan-Project-style</b> AGI effort.</li>
+          <li>Government takes a direct role by ~2027–28.</li>
+          <li>AI folded into defense &amp; intelligence.</li>
+        </ul>
+      </div>
+      <div class="panel happened">
+        <div class="plabel" style="color:#FBBF24;">What happened · by 2026</div>
+        <ul>
+          <li><b style="color:#F1F5FB;">Stargate</b> unveiled from the White House.</li>
+          <li>AI data centers fast-tracked on <b style="color:#F1F5FB;">federal land</b>.</li>
+          <li>"Genesis Mission" mobilizes <b style="color:#F1F5FB;">all 17 national labs</b> (Nov 2025).</li>
+          <li><b style="color:#F1F5FB;">$200M Pentagon deals</b> for OpenAI, Anthropic, Google, xAI.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdict"><span class="badge b-amber">◐ EMERGING</span><span class="vtext">Not one project yet — but the scaffolding is going up fast.</span></div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>08 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 9 — PREDICTION 5 ============ -->
+<section class="page" data-document-role="page" data-label="Prediction 5 — A Public Stake in AI"
+  data-speaker-notes="Prediction five. The paper argued that something this powerful couldn't stay purely private — there would be fights over who owns it and who benefits. That debate arrived faster than almost anyone expected. In June 2025, Senator Bernie Sanders proposed that the public should own half of the big AI companies, funneling shares into a roughly seven-trillion-dollar public wealth fund that would pay every American an annual dividend. Whatever you think of the policy, the very fact that a U.S. senator is proposing public ownership of AI tells you the stakes have gone mainstream. Verdict: confirmed — and sooner than expected.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">PREDICTION 5 / 5</span>
+  </div>
+  <div class="main">
+    <div class="kicker">A Public Stake In AI</div>
+    <h2>Who should own — and profit from — superintelligence?</h2>
+    <div class="cols" style="margin-top:26px;">
+      <div class="panel">
+        <div class="plabel" style="color:#8DA0BE;">He predicted · 2024</div>
+        <ul>
+          <li>AI is too important to remain <b style="color:#F1F5FB;">purely private</b>.</li>
+          <li>Expect fights over ownership, profits &amp; public control.</li>
+          <li>The "who benefits?" question goes political.</li>
+        </ul>
+      </div>
+      <div class="panel happened">
+        <div class="plabel" style="color:#34D399;">What happened · by 2026</div>
+        <ul>
+          <li>Sen. <b style="color:#F1F5FB;">Bernie Sanders proposes the public own 50%</b> of big AI firms (Jun 2025).</li>
+          <li>Plan routes shares into a ~<b style="color:#F1F5FB;">$7 trillion</b> public wealth fund.</li>
+          <li>Would pay a <b style="color:#F1F5FB;">citizen dividend</b> of $1,000+ per year.</li>
+          <li>AI jobs, profits &amp; ownership now a mainstream debate.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdict"><span class="badge b-green">✓ CONFIRMED</span><span class="vtext">A sitting U.S. senator put it on the table — early.</span></div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>09 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 10 — BONUS ============ -->
+<section class="page" data-document-role="page" data-label="Bonus — The Tech & The Author"
+  data-speaker-notes="A quick bonus round on two things the paper also got right. First, the technology: he said AI would get smarter through 'reasoning' and 'agents,' and sure enough, reasoning models like OpenAI's o1 and o3 arrived and posted huge jumps on hard benchmarks, while AI agents that use a computer became real products. Money followed: OpenAI is around a 20-billion-dollar revenue run-rate, Anthropic around 30 billion — a steep climb, though not yet the 100 billion he sketched. Second, he warned safety was being neglected — and within weeks of publishing, OpenAI's own safety 'Superalignment' team dissolved, with its leaders quitting and saying safety had lost out to 'shiny products.' And tellingly, Aschenbrenner put his money where his mouth is, launching a roughly 1.5-billion-dollar fund betting on exactly this build-out.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">BONUS ROUND</span>
+  </div>
+  <div class="main">
+    <div class="kicker">The Technology &amp; The Author</div>
+    <h2>Four more things the paper got right.</h2>
+    <div class="cardgrid" style="margin-top:24px;">
+      <div class="card"><h3>Smarter, on cue</h3><p>"Reasoning" models (o1, o3) &amp; AI agents arrived — with big benchmark leaps, just as predicted.</p></div>
+      <div class="card"><h3>Money followed</h3><p>OpenAI ~$20B and Anthropic ~$30B revenue run-rates — a steep ramp (not yet the $100B he sketched).</p></div>
+      <div class="card"><h3>Safety took a backseat</h3><p>OpenAI's "Superalignment" team dissolved in 2024; leaders quit, warning safety lost to "shiny products."</p></div>
+      <div class="card"><h3>He bet on it</h3><p>Aschenbrenner launched "Situational Awareness LP," a ~$1.5B fund backing the AI &amp; power build-out.</p></div>
+    </div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>10 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 11 — SCORECARD ============ -->
+<section class="page" data-document-role="page" data-label="The Scorecard"
+  data-speaker-notes="Let's tally it up. Trillion-dollar compute: confirmed. Power as the bottleneck: confirmed. Security and espionage: confirmed. Government stepping in: emerging — happening, just not as one project. The public-ownership debate: confirmed, early. The underlying tech direction — reasoning and agents: on track. The one big thing still outstanding is the headline claim itself: full AGI and superintelligence have not arrived. That's the line to watch. But five of seven calls already landing, in just two years, is a remarkable hit rate for a single essay.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">THE TALLY</span>
+  </div>
+  <div class="main">
+    <div class="kicker">The Two-Year Scorecard</div>
+    <h2>How the predictions are holding up.</h2>
+    <table style="margin-top:18px;">
+      <tr><td>1 · Trillion-dollar compute build-out</td><td class="v" style="color:#34D399;">✓ Confirmed</td></tr>
+      <tr><td>2 · Power is the binding constraint</td><td class="v" style="color:#34D399;">✓ Confirmed</td></tr>
+      <tr><td>3 · Security &amp; espionage threat</td><td class="v" style="color:#34D399;">✓ Confirmed</td></tr>
+      <tr><td>4 · Government steps in</td><td class="v" style="color:#FBBF24;">◐ Emerging</td></tr>
+      <tr><td>5 · A public stake in AI</td><td class="v" style="color:#34D399;">✓ Confirmed</td></tr>
+      <tr><td>Bonus · Reasoning models &amp; agents</td><td class="v" style="color:#34D399;">✓ On track</td></tr>
+      <tr><td>The headline · Full AGI / superintelligence</td><td class="v" style="color:#A8B6CC;">○ Not yet</td></tr>
+    </table>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>11 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 12 — CAVEATS ============ -->
+<section class="page" data-document-role="page" data-label="The Honest Caveats"
+  data-speaker-notes="Now let me be fair and skeptical, because a good forecast deserves honest grading. Several big things have NOT happened. AGI is not here — 2027 remains a contested forecast, and plenty of respected researchers think it's years further out or fundamentally harder. The clusters are at single-digit gigawatts, not the 100-gigawatt monsters he imagined for 2030. Revenue is in the tens of billions, not hundreds. And a serious chorus warns this is a bubble that could correct hard. The fair summary: the direction of travel is unmistakable, but the destination and the timing are still genuinely uncertain.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">STAYING HONEST</span>
+  </div>
+  <div class="main">
+    <div class="kicker">What Hasn't Happened — Yet</div>
+    <h2>A fair forecast deserves honest grading.</h2>
+    <ul style="margin-top:20px;">
+      <li><b style="color:#F1F5FB;">AGI hasn't arrived.</b> "2027" is still a forecast — and a hotly contested one.</li>
+      <li><b style="color:#F1F5FB;">Clusters are single-digit gigawatts</b>, not the ~100 GW he projected for 2030.</li>
+      <li><b style="color:#F1F5FB;">AI revenue is ~$20–30B</b>, not the $100B+ trajectory's endpoint.</li>
+      <li><b style="color:#F1F5FB;">"Bubble" warnings are loud.</b> Timelines could slip; spending could correct.</li>
+    </ul>
+    <div class="sub" style="margin-top:26px;color:#7CC9F5;font-size:22px;">The <b>direction</b> is unmistakable. The <b>destination and timing</b> are still uncertain.</div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>12 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 13 — TAKEAWAY ============ -->
+<section class="page" data-document-role="page" data-label="What This Means For You"
+  data-speaker-notes="So what does this mean for the rest of us — people who aren't building giant data centers? Three takeaways. First, AI has become an infrastructure story — power, chips, capital, and policy — not just apps and chatbots. Second, things move in quarters, not years; plan accordingly. Third, the hard questions — energy costs, security, and governance — are going to land on every organization, including yours. The people who do well won't be the ones with the flashiest tool; they'll be the ones with genuine situational awareness who act on it early. That, in a sentence, is what we do at Autonomous Agent.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT</span></div>
+    <span class="tag">THE TAKEAWAY</span>
+  </div>
+  <div class="main">
+    <div class="kicker">What This Means For You</div>
+    <h2>The decade ahead is an infrastructure story —<br>and a leadership one.</h2>
+    <ul style="margin-top:22px;">
+      <li>AI is now about <b style="color:#F1F5FB;">power, chips, capital &amp; policy</b> — not just apps.</li>
+      <li>Capabilities and costs move in <b style="color:#F1F5FB;">quarters, not years</b> — plan that way.</li>
+      <li>Energy, security &amp; governance questions <b style="color:#F1F5FB;">reach every organization</b>.</li>
+      <li>The edge goes to those who build <b style="color:#F1F5FB;">situational awareness</b> — and act early.</li>
+    </ul>
+    <div class="sub" style="margin-top:24px;color:#7CC9F5;font-size:22px;">That's exactly what <b>Autonomous Agent</b> helps you do.</div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>13 / 14</span></div>
+</section>
+
+<!-- ============ SLIDE 14 — CLOSING ============ -->
+<section class="page" data-document-role="page" data-label="Thank You"
+  data-speaker-notes="Thank you. To recap: a 2024 essay that most people ignored has, two years on, largely described the world we're now living in — the spending, the energy scramble, the security fights, and the government's entrance. The one big open question is whether the biggest claim of all — superintelligence — follows the rest. I'm Fleming Slone with Autonomous Agent AI, and I'd love to take your questions — and to talk about what this means for your organization.">
+  <div class="hdr">
+    <div class="brand"><div class="chip"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div><span class="brandtxt">AUTONOMOUS AGENT &nbsp;·&nbsp; AI CONSULTING</span></div>
+    <span class="tag">THANK YOU</span>
+  </div>
+  <div class="titlewrap">
+    <div class="closebadge" style="margin-bottom:28px;"><img src="https://autonomous-agent.ai/assets/images/logos/autonomous-agent-logo.png" alt="Autonomous Agent AI"></div>
+    <div class="bigtitle" style="font-size:60px;">Thank you.</div>
+    <div class="accentline"></div>
+    <div class="presenter"><b>Fleming Slone</b> — Founder, Autonomous Agent AI</div>
+    <div class="sub" style="margin-top:10px;font-size:21px;">Atlanta's Top AI Consultants, Working For You.</div>
+    <div class="sub" style="margin-top:16px;font-size:19px;color:#8DA0BE;">autonomous-agent.ai &nbsp;·&nbsp; (404) 441-1434 &nbsp;·&nbsp; Atlanta, GA</div>
+  </div>
+  <div class="ftr"><span>© 2026 Autonomous Agent AI · All rights reserved</span><span>14 / 14</span></div>
+</section>
+
+</body>
+</html>
